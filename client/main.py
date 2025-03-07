@@ -5,7 +5,7 @@ from pigpio import pi, OUTPUT, INPUT
 
 SLEEP: int = 0.10
 PORT: int = 9090
-ADDR: str = "10.10.21.138"
+ADDR: str = "10.10.21.160"
 TRIG: int = 15
 ECHO: int = 14
 
