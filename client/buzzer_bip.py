@@ -14,7 +14,7 @@ def bip(distances_queue):
         distance = distances_queue.get()
         current_time = time.time()
 
-        if distance > 30:
+        if distance > 25:
             pi.write(BUZZER_PIN, 0)
             continue
         elif distance <= 10:
