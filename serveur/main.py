@@ -8,7 +8,7 @@ PORT: int = 9090
 BUFFER_SIZE: int = 1024
 
 #Create a queue to store the data
-data_queue = queue.Queue()
+distances_queue = queue.Queue()
 
 #Create a socket to receive the messages from the client UDP
 socket_local: socket = socket(AF_INET, SOCK_DGRAM)
@@ -18,11 +18,11 @@ print(f"On attend les messages UDP entrants au port {PORT}...\n")
  
 
 #Load the colors from the json file               
-couleurs_proxemie = led_color_control.charger_couleurs_json()
+proxemia_colors = led_color_control.load_colors_json()
 
 
 #This thread opens the LED strip
-led_thread = threading.Thread(target=led_color_control.openLed, args=(data_queue, couleurs_proxemie), daemon=True).start()
+led_thread = threading.Thread(target=led_color_control.openLed, args=(distances_queue, proxemia_colors), daemon=True).start()
 
 """
     This function receives the messages from the client UDP
@@ -33,7 +33,7 @@ def msg_from_udp():
 
         msg: int = buffer.decode()
             
-        data_queue.put(msg)
+        distances_queue.put(msg)
         
 
         print(f"> {msg}\n", end="")

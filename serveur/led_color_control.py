@@ -11,13 +11,21 @@ strip = PixelStrip(LED_COUNT, LED_PIN)
 strip.begin()
 
 """
+    ENGLISH VERSION
     This function loads the colors from the json file
 """
-def charger_couleurs_json(fichier="couleurs.json"):
+def load_colors_json(file="colors.json"):
+    with open(file, "r") as file:
+        colors = json.load(file)
+    return {int(k): tuple(v) for k, v in colors.item()}
+
+"""
+FRENCH VERSION
+def charger_couleurs_json(fichier="colors.json"):
    with open(fichier, "r") as file:
        couleurs = json.load(file)
    return {int(k): tuple(v) for k, v in couleurs.items()}
-
+"""
 
 # OLD ONE
 # def get_couleur_dict_old(distance, couleur_dict):
@@ -25,38 +33,40 @@ def charger_couleurs_json(fichier="couleurs.json"):
 
 
 """
+    ENGLISH VERSION
     NEW ONE
     This function returns the color of the LED strip according to the distance
 """
-def get_couleur_dict(distance, couleur_dict):
+def get_color_dict(distance, color_dict):
     if distance >= 200:
-        return couleur_dict[200] 
+        return color_dict[200] 
     elif distance < 10:
-        return couleur_dict[10] 
+        return color_dict[10] 
     else:
-        return couleur_dict[((distance // 10) + 1) * 10] 
+        return color_dict[((distance // 10) + 1) * 10] 
 
 
 """
+    ENGLISH VERSION
     This function opens the LED strip
 """
-def openLed(data_queue, couleurs_proxemie):
+def openLed(distances_queue, proxemia_colors):
     while True:
-        distances_test = data_queue.get()
-        print(distances_test)
-        couleur = get_couleur_dict(int(distances_test), couleurs_proxemie)
-        r, g, b = couleur
+        distances = distances_queue.get()
+        print(distances)
+        color = get_color_dict(int(distances), proxemia_colors)
+        r, g, b = color
         for i in range(LED_COUNT):
             strip.setPixelColor(i, Color(r, g, b))
         strip.show()
 
 
 """
+    ENGLISH VERSION
     This function closes the LED strip
 """
 def close_led():
     for i in range(LED_COUNT):
         strip.setPixelColor(i, Color(0,0,0))
-    strip.show()
-    
+    strip.show() 
     
