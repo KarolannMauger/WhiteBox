@@ -1,5 +1,4 @@
 import json
-import time
 from rpi_ws281x import PixelStrip, Color
 
 #LED strip configuration:
@@ -11,30 +10,14 @@ strip = PixelStrip(LED_COUNT, LED_PIN)
 strip.begin()
 
 """
-    ENGLISH VERSION
     This function loads the colors from the json file
 """
-def load_colors_json(file="colors.json"):
-    with open(file, "r") as file:
+def load_colors_json(fichier="colors.json"):
+    with open(fichier, "r") as file:
         colors = json.load(file)
-    return {int(k): tuple(v) for k, v in colors.item()}
+    return {int(k): tuple(v) for k, v in colors.items()}
 
 """
-FRENCH VERSION
-def charger_couleurs_json(fichier="colors.json"):
-   with open(fichier, "r") as file:
-       couleurs = json.load(file)
-   return {int(k): tuple(v) for k, v in couleurs.items()}
-"""
-
-# OLD ONE
-# def get_couleur_dict_old(distance, couleur_dict):
-#     return couleur_dict[200] if distance >= 200 else couleur_dict[(distance//10)*10]
-
-
-"""
-    ENGLISH VERSION
-    NEW ONE
     This function returns the color of the LED strip according to the distance
 """
 def get_color_dict(distance, color_dict):
@@ -47,7 +30,6 @@ def get_color_dict(distance, color_dict):
 
 
 """
-    ENGLISH VERSION
     This function opens the LED strip
 """
 def openLed(distances_queue, proxemia_colors):
@@ -62,7 +44,6 @@ def openLed(distances_queue, proxemia_colors):
 
 
 """
-    ENGLISH VERSION
     This function closes the LED strip
 """
 def close_led():
