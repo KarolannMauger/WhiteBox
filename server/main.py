@@ -14,7 +14,7 @@ distances_queue = queue.Queue()
 socket_local: socket = socket(AF_INET, SOCK_DGRAM)
 adr_local: tuple = ("", PORT)
 socket_local.bind(adr_local)
-print(f"On attend les messages UDP entrants au port {PORT}...\n")
+print(f"Wating for UDP messages on port {PORT}...\n")
  
 
 #Load the colors from the json file               
@@ -22,7 +22,7 @@ proxemia_colors = led_color_control.load_colors_json()
 
 
 #This thread opens the LED strip
-led_thread = threading.Thread(target=led_color_control.openLed, args=(distances_queue, proxemia_colors), daemon=True).start()
+thread_led = threading.Thread(target=led_color_control.openLed, args=(distances_queue, proxemia_colors), daemon=True).start()
 
 """
     This function receives the messages from the client UDP
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     try:
         msg_from_udp()
     except KeyboardInterrupt:
-        print("\nFin du programme")
+        print("\nEnd of the program")
     finally:
         led_color_control.close_led()
         socket_local.close()

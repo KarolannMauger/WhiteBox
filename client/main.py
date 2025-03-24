@@ -1,6 +1,6 @@
 from socket import socket, AF_INET, SOCK_DGRAM
 from time import sleep
-from capteur_ultrasonic import distance
+from ultrasonic_sensor import distance
 from pigpio import pi, OUTPUT, INPUT
 import queue
 import threading
