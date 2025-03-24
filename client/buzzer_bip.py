@@ -5,7 +5,9 @@ BUZZER_PIN = 18
 pi = pigpio.pi()
 pi.set_mode(BUZZER_PIN, pigpio.OUTPUT)
 
-
+"""
+    Function that will be executed in a thread to make the buzzer bip
+"""
 def bip(distances_queue):
     last_bip_time = time.time()
     tempo = 0.8
@@ -19,19 +21,14 @@ def bip(distances_queue):
             continue
         elif distance <= 10:
             pi.write(BUZZER_PIN, 1)
-            print(f"BIP constant distance={distance}cm")
             continue
         elif distance > 20:
             tempo = 0.8
-            mode = "BIP LENT"
         elif distance > 15:
             tempo = 0.4
-            mode = "BIP MOYEN"
         else:
             tempo = 0.2
-            mode = "BIP RAPIDE"
 
-        print(f"Mode : {mode} (tempo={tempo}s) distance={distance}cm")
         if current_time - last_bip_time >= tempo:
             pi.write(BUZZER_PIN, 1)
             time.sleep(0.01)
