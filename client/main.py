@@ -18,8 +18,8 @@ distances_queue = queue.Queue()
 thread_buzzer = threading.Thread(target=buzzer_bip.bip, args=(distances_queue, ), daemon=True).start()
 
 def calculate_median(distances_list):
-    distances_list.sort()
-    return distances_list[2]
+    median_list = sorted(distances_list)
+    return median_list[2]
 
 
 if __name__ == "__main__":
