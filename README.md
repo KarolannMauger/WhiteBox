@@ -107,7 +107,8 @@ $ cd WhiteBox
    $ sudo python3 main.py
    ```
 
----
+> **Note:** The `rpi_ws281x` library conflicts with `pigpio`.  
+> To resolve this, LED string management is handled by a **separate Raspberry Pi** via a **UDP connection**.
 
 ---
 
@@ -149,56 +150,25 @@ You can modify `server/colors.json` to change the color associated with each dis
 
 ## Project Structure
 
-WhiteBox/
-│
-├── client/
-│   ├── main.py               # Measures distance, handles buzzer, sends data via UDP
-│   ├── buzzer.py             # Manages buzzer frequency based on distance
-│   └── distance_sensor.py    # Reads ultrasonic sensor values        
-│
-├── server/
-│   ├── main.py               # Receives UDP data and controls the LED strip
-│   ├── led_controller.py     # Converts distance to RGB and controls the LED
-│   └── colors.json       # Defines RGB colors for each 10cm range (200-0 cm)
-│
-└── README.md                 # Project documentation
+Project Structure will be added soon.
 
 ---
 
+## Demo
 
+A video demonstration will be added soon.
 
+---
 
+## Credits
 
+- Developpement: [@KarolannMauger](https://github.com/KarolannMauger) & [@Marc-AntoineMercier](https://github.com/Marc-AntoineMercier)
+- Fashion Design : Anaëlle Tennier
+- Inspired by humain proxemic theory and interactive wearable tech.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## License
+This project is developed as part of the cours *Introduction aux platformes IdO | 420-410-MV*.
+Copyright © [2025] [@KarolannMauger](https://www.github.com/KarolannMauger) and [@Marc-AntoineMercier](https://www.github.com/Marc-AntoineMercier).  
+All rights reserved. Redistribution, modification, and commercial use are strictly prohibited.  
