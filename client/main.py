@@ -36,8 +36,8 @@ if __name__ == "__main__":
             median = 0 
             dist = distance(pi, TRIG, ECHO)
             
-            if not dist > 1200:
-                distances_list.append(dist)
+            
+            distances_list.append(dist)
             
             if (len(distances_list) == 5):
                 median = calculate_median(distances_list)
