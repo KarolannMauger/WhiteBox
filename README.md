@@ -169,6 +169,8 @@ A video demonstration will be added soon.
 ---
 
 ## License
-This project is developed as part of the cours *Introduction aux platformes IdO | 420-410-MV*.
-Copyright © [2025] [@KarolannMauger](https://www.github.com/KarolannMauger) and [@Marc-AntoineMercier](https://www.github.com/Marc-AntoineMercier).  
-All rights reserved. Redistribution, modification, and commercial use are strictly prohibited.  
+
+This project is protected under a custom license that allows personal and educational use, but prohibits commercial reuse or redistribution of the code or concept without permission.
+
+See the [LICENSE](./LICENSE) file for full details.
+ 
